@@ -16,6 +16,7 @@ import $ from "jquery";
 import * as bootstrap from 'bootstrap'
 import { SendRequest } from '../../consumos/ConsecutivoDocumentos/API_Manager.js';
 import ModalEditarConsecutivo from './ModalEditarConsecutivo.jsx';
+import ModalCreacionConsecutivo from './ModalCreacionConsecutivo.jsx';
 
 export default function ConsecutivoDocumentos({ChangeAlerts}) {
 
@@ -29,6 +30,12 @@ export default function ConsecutivoDocumentos({ChangeAlerts}) {
     const [ShowSection, setShowSection] = useState(false);
     const [ConsecutivoEdit, setConsecutivoEdit] = useState({});
     const [ModalEdicion, setModalEdicion] = useState(null);
+    const [ModalCreacion, setModalCreacion] = useState(null);
+    const [TipoDocsNew, setTipoDocsNew] = useState([]);
+    const [TipoDocSelecNew, setTipoDocSelecNew] = useState(null);
+    let [ListTooltip, setListTooltip] = useState([]);
+
+
     let SucID = null;
     const getSucursales = async() => {
         const responseSucursales = await Consultar_Sucursales(1);
@@ -69,6 +76,31 @@ export default function ConsecutivoDocumentos({ChangeAlerts}) {
           }
       }
     }
+
+    const getTipoDocumentosNuevoRegistro = async(datos) => {
+      var IdsExclude = datos.map((td) => {
+          return td.tpDID
+      });
+      const responseTD = await SendRequest({
+          idsExclude: IdsExclude
+      }, "Consultas/Consultar_TipoDocumentos");
+      if(responseTD?.ok){
+        setTipoDocsNew(responseTD.datos);
+      }else{
+          if(responseTD.errores){
+              let arraySend = [];
+              responseTD.errores.map((error) => {
+                  const {codigo, descripcion} = error;
+                  arraySend = [...arraySend, {
+                      "title": `Error de validación (${codigo})`,
+                      "desc": `${descripcion}`,
+                      "type": "alert-error"
+                  }];
+              });
+              ShowAlerts(arraySend);
+          }
+      }
+  }
 
     const ShowAlerts = (array)=> {
         setListAlert(array);
@@ -127,10 +159,10 @@ export default function ConsecutivoDocumentos({ChangeAlerts}) {
         });
         if(response?.ok){
           setConsecutivosTD(response.datos);
+          getTipoDocumentosNuevoRegistro(response.datos);
           $(function() {
               setTimeout(function(){
-                  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-                  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+                  InstanceTooltips();
               },500);
           });
         }else{
@@ -215,7 +247,7 @@ export default function ConsecutivoDocumentos({ChangeAlerts}) {
       }
 
       return ListAlert;
-  }
+    }
 
     const EditarConsecutivo = (obj)=>{
       if (obj) {
@@ -227,6 +259,18 @@ export default function ConsecutivoDocumentos({ChangeAlerts}) {
           ModalEdicion.show();
         }
         setConsecutivoEdit(obj);
+      }
+    }
+
+    const NuevoConsecutivo = (obj)=>{
+      if (obj) {
+        if (ModalCreacion== null) {
+            let ModalNew = new bootstrap.Modal(document.getElementById('ModalNuevoConsecutivo'));
+            setModalCreacion(ModalNew);
+            ModalNew.show();
+        }else{
+          ModalCreacion.show();
+        }
       }
     }
 
@@ -292,7 +336,94 @@ export default function ConsecutivoDocumentos({ChangeAlerts}) {
           }
 
       }
-  }
+    }
+
+    const GuardarNuevoConsecutivo = async({ConsecutivoInicial, ConsecutivoFinal, TipoDocSelecNew})  =>{
+
+      let ListAlert = [];
+      if (TipoDocSelecNew) {
+          if (TipoDocSelecNew.tpDConsMes == 0) {
+              ListAlert = ValidConsecutivos(ConsecutivoInicial, ConsecutivoFinal);
+              if (ListAlert != null && ListAlert.length > 0) {
+                  ShowAlerts(ListAlert);
+                  return;
+              }
+          }
+          const response = await SendRequest({
+              empId: 1,
+              tpDID: TipoDocSelecNew.tpDID,
+              sucId: SucursalSelected,
+              ConsecutivoInicial: ConsecutivoInicial,
+              ConsecutivoFinal: ConsecutivoFinal
+          }, "ConsecutivoDocumentos/Guardar_Consecutivos");
+          if(response?.ok){
+              ReloadDataGRID();
+              document.getElementById('input-ComboTipoDocNew').value = "";
+              ModalCreacion.hide();
+              ListAlert = [{
+                  "title": "Inserción exitosa",
+                  "desc":  response.descripcion,
+                  "type": "alert-success"
+              }];
+
+          }else{
+              if (response.datos) {
+                  response.datos.map((error) => {
+                      const { mensajeError, cnsId} = error;
+                      ListAlert = [...ListAlert, {
+                          "title": "Error de validación",
+                          "desc":  mensajeError,
+                          "type": "alert-warning"
+                      }];
+                  });
+              }else{
+                  ListAlert = [...ListAlert, {
+                      "title": `Error de validación (${response.codigo})`,
+                      "desc":  response.descripcion,
+                      "type": "alert-warning"
+                  }];
+              }
+
+              if(response.errores){
+                  response.errores.map((error) => {
+                      const {codigo, descripcion} = error;
+                      ListAlert = [...ListAlert, {
+                          "title": `Error de validación (${codigo})`,
+                          "desc": `${descripcion}`,
+                          "type": "alert-warning"
+                      }];
+                  });
+              }
+          }
+      }else{
+        ListAlert = [...ListAlert, {
+          "title": `Tipo documento sin seleccionar`,
+          "desc": `Por favor seleccione un tipo de documento`,
+          "type": "alert-warning"
+        }];
+      }
+      ShowAlerts(ListAlert);
+
+    }
+
+    const InstanceTooltips = ()=> {
+      const tooltipTriggerList = document.getElementById('ContentConsecutivos').querySelectorAll('[data-bs-toggle="tooltip"]');
+      let newArraySet = [];
+      let ListTooltipAdd = [...tooltipTriggerList].map(tooltipTriggerEl => {
+          var instanced = false;
+          for (let i = 0; i < ListTooltip.length; i++) {
+              if (ListTooltip[i]== tooltipTriggerEl.id) {
+                  instanced = true;
+              }
+          }
+          if (instanced == false) {
+              var tool = new bootstrap.Tooltip(tooltipTriggerEl);
+              newArraySet = [...newArraySet, tool];
+          }
+      });
+      
+      setListTooltip(newArraySet);
+    }
     return (
       <>
           <HeaderMaestros 
@@ -306,6 +437,7 @@ export default function ConsecutivoDocumentos({ChangeAlerts}) {
                   <AdminConsecutivoMensual
                     ConsecutivoSelected={ConsecutivoSelected}
                     EventAlerts={ShowAlerts}
+                    InstanceTooltips={InstanceTooltips}
                   />
                   {/* ------------- Component Correspondiente ------- */}
                   <div onClick={() => ShowHideSection()} className="col-sm-auto CSectionClose">
@@ -313,7 +445,7 @@ export default function ConsecutivoDocumentos({ChangeAlerts}) {
                     {/* <i class="fa-solid fa-caret-left"></i> */}
                   </div>
             </div>
-            <div className={"col-sm-" + (ShowSection ? "8" : "12")}>
+            <div id='ContentConsecutivos' className={"col-sm-" + (ShowSection ? "8" : "12")}>
                 <div className="col-sm-12 mb-4 pt-3 d-flex justify-content-center">
                   <div className={"ps-1 d-flex col-sm-"+ (ShowSection ? "11" : "9")}>
                     <div className="col-sm-3 me-3">
@@ -348,6 +480,15 @@ export default function ConsecutivoDocumentos({ChangeAlerts}) {
                         }
                       />
                     </div>
+                    {
+                      SucursalSelected != null &&
+                      <div className='col-sm-5 d-flex justify-content-end align-items-end'>
+                          <button onClick={NuevoConsecutivo} data-bs-toggle="tooltip" data-bs-placement="left" title="Nuevo Consecutivo"  className="CircleButton btnAYFBase me-3">
+                            <i className="fa-solid fa-circle-plus"></i>
+                          </button>
+                      </div>
+                    }
+                    
 
                   </div>
                     
@@ -384,6 +525,8 @@ export default function ConsecutivoDocumentos({ChangeAlerts}) {
           </div>
           <Alert ListData={ListAlert} ChangeAlerts={ShowAlerts}/>
           <ModalEditarConsecutivo objEdit={ConsecutivoEdit} EventSaveConsecutivo={GuardarConsecutivo}/>
+          <ModalCreacionConsecutivo DataTipoDoc={TipoDocsNew} EventSaveConsecutivo={GuardarNuevoConsecutivo}/>
+
       </>
     )
 }

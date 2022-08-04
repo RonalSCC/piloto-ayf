@@ -15,6 +15,7 @@ export default function AdminConsecutivoMensual({ConsecutivoSelected = {}, Event
     const [MesesC, setMesesC] = useState([])
     const [AnoMesesC, setAnoMesesC] = useState(null);
     let [ListTooltip, setListTooltip] = useState([]);
+
     const getMesesConsecutivo = async() => {
         if (cnsId) {
             const response = await Consultar_ConsecutivoMesAno({cnsId: cnsId});
@@ -51,6 +52,7 @@ export default function AdminConsecutivoMensual({ConsecutivoSelected = {}, Event
 
     useEffect(()=> {
         getMesesConsecutivo();
+        InstanceTooltips();
     }, [ConsecutivoSelected]);
 
     const ChangeYearConsecutivoMes = ({ano,mesesC}) =>{
@@ -159,6 +161,7 @@ export default function AdminConsecutivoMensual({ConsecutivoSelected = {}, Event
             document.getElementById('ContainerSaveMeses').classList.remove("DisabledContainer");
         }
     }
+
     const GuardarMesesConsecutivos = async() =>{
         if (MesesC) {
             let MesesSend = [...MesesC];
@@ -226,32 +229,28 @@ export default function AdminConsecutivoMensual({ConsecutivoSelected = {}, Event
     }
 
     const InstanceTooltips = ()=> {
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-        let newArraySet = null;
+        const tooltipTriggerList = document.getElementById('SectionAditional').querySelectorAll('[data-bs-toggle="tooltip"]');
+        console.log(tooltipTriggerList);
+        let newArraySet = [];
         let ListTooltipAdd = [...tooltipTriggerList].map(tooltipTriggerEl => {
             var instanced = false;
             for (let i = 0; i < ListTooltip.length; i++) {
-                debugger
                 if (ListTooltip[i]== tooltipTriggerEl.id) {
                     instanced = true;
                 }
             }
             if (instanced == false) {
-                new bootstrap.Tooltip(tooltipTriggerEl);
-                newArraySet = [...ListTooltip, tooltipTriggerEl.id];
+                var tool = new bootstrap.Tooltip(tooltipTriggerEl);
+                newArraySet = [...newArraySet, tooltipTriggerEl.id];
             }
         });
         
         setListTooltip(newArraySet);
-    }
+      }
 
-    const ClearTooltips = ()=>{
-        console.log(ListTooltip);
-    }
   return (
     <>
         <div id='CGeneralAdminConsecutivoMensual' className="col-sm-12 h-100">
-
             <div className='col-sm-12 '>
                 <h5 className="titleAdminCM">{sucDesc}</h5>
                 <div className='col-sm-12 '>
@@ -278,7 +277,7 @@ export default function AdminConsecutivoMensual({ConsecutivoSelected = {}, Event
                             </div>
 
                             <div id='ContainerSaveMeses' onClick={() => GuardarMesesConsecutivos()} className='col-sm-1 ms-1 d-flex justify-content-center align-items-center CContainerSaveConMes'>
-                                <i className="fa-solid fa-floppy-disk IconConMes"></i>
+                                <i  className="fa-solid fa-floppy-disk IconConMes" data-bs-toggle="tooltip" data-bs-placement="top" title="Guardar"></i>
                             </div>
                         </div>
                         
@@ -324,7 +323,9 @@ export default function AdminConsecutivoMensual({ConsecutivoSelected = {}, Event
                                 <p className='txtxNameMes'>
                                     <b className='FirstLetterMonth'>{nombreMes.charAt(0)}</b>
                                     {nombreMes.substring(1)}
-                                    {error && <i data-bs-toggle="tooltip" data-bs-html="true" title={error} className="ms-2 IconAdvertencia fa-solid fa-circle-exclamation" id={"Tool"+mesId+AnoMesesC}></i>} 
+                                    {
+                                        error && <i data-bs-toggle="tooltip" data-bs-html="true" title={error} className="ms-2 IconAdvertencia fa-solid fa-circle-exclamation" id={"Tool"+mesId+AnoMesesC}></i>
+                                    } 
                                 </p>
                             </div>
                             <div className='col-sm-4'>
