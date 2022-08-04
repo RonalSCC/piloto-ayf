@@ -1,0 +1,124 @@
+#SectionDocPeriodo
+{
+    position: fixed;
+    height: 85%;
+    width: 0%;
+    left: 0px;
+    background: white;
+    overflow: hidden;
+    box-shadow: 3px 0px 2px rgba(0,0,0,.15);
+    transition: all ease .4s;
+    border-radius: 0px 5px 5px 0px
+}
+
+.SectionDocShow
+{
+    width: 30% !important;
+    padding: 1% 1% 1% 2%;
+}
+.ContainerTipoDocs
+{
+    height: 88%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 2%;
+}
+
+.IconBackTD
+{
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--colorBaseDark);
+}
+
+.txtIDTD
+{
+    font-weight: bold;
+    font-size: .7rem;
+    margin-bottom: 0px;
+}
+
+.PerTitle
+{
+    text-shadow: 2px 2px 1px rgb(0 0 0 / 10%);
+    font-weight: 500;
+}
+.SectionDocsTitlePeriodo
+{
+    font-size: 1.2rem;
+    color: rgba(0,0,0,.8);
+    margin-bottom: 0px;
+    font-weight: 400;
+}
+
+.txtDescTD
+{
+    font-size: .85rem;
+    margin-bottom: 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 3%;
+}
+
+.ContainerIconTD
+{
+    padding: 3% 2%;
+    border-radius: 5px 0px 0px 5px;
+    box-shadow: 1px 0px 3px rgb(0 0 0 / 20%)
+}
+
+.CIconTDUnLock
+{
+    background-color: var(--colorBase);
+}
+
+.CIconTDLock
+{
+    background-color: rgba(0,0,0,.1);
+}
+.iconUnlockTD
+{
+    color: white;
+}
+
+.iconLockTD
+{
+    color: #d58a00;
+}
+.CardTipoDocs
+{
+    margin-bottom:  2%;
+    border: 1px solid rgba(0,0,0,.1);
+    box-shadow: 1px 1px 3px rgba(0,0,0,.1);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.CardTipoDocs:hover
+{
+    background-color: rgba(0,0,0,.07);
+}
+
+.inputSearch
+{
+    height: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    width: 90%;
+    outline: none !important;
+    color: rgba(0,0,0,.7);
+    font-size: .9rem;
+}
+
+.CIconAllTD
+{
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,.07);
+    cursor: pointer;
+}
+
+.CIconAllTD:hover
+{
+    filter: saturate(150%);
+}

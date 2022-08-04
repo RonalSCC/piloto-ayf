@@ -1,0 +1,92 @@
+.IconAdvertencia
+{
+    color: var(--colorBase);
+}
+
+.AdminMesesTD
+{
+    font-weight: 700 !important;
+    color: rgba(0,0,0,.6) !important;
+    cursor: pointer;
+}
+
+.AdminMesesTD:hover
+{
+    font-weight: 700 !important;
+    color: rgba(0,0,0,.8) !important;
+}
+
+.IconSave{
+    color: var(--colorBase);
+    font-size: 1rem;
+}
+
+.IconSave:hover{
+    transform: scale(1.1);
+}
+
+.IconAdd{
+    color: var(--colorBase);
+    font-size: 1.2rem;
+}
+
+.IconAdd:hover{
+    transform: scale(1.1);
+}
+
+.disabledSave{
+    pointer-events: none;
+    opacity: .5;
+}
+
+.tdConsecutivo{
+    height: 1rem;
+    /* padding: 0% !important; */
+    vertical-align: middle;
+}
+
+.TDNewConsecutivo{
+    height: 1rem;
+    padding: 0px !important;   
+    vertical-align: middle;
+    text-align: center; 
+}
+
+.TDNewConsecutivo .ISearch{
+    border: none;
+    text-align: left;
+}
+.inputConsecutivo{
+    height: 100%;
+    font-size: .8rem;
+    width: 100%;
+    /* border: none; */
+    text-align: left;
+    padding-left: 5%;
+}
+.InputActiveDGConsecutivo{
+    box-shadow: 0px 1px 4px rgba(var(--colorBaseRGBA),.2);
+    border-radius: 3px;
+    position: relative;
+    height: 35px;
+}
+
+.inputConsecutivoNew
+{
+    width: 100%;
+    height: 100%;
+    font-size: .8rem;
+    border: none;
+    padding-left: 3%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}

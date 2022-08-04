@@ -1,0 +1,12 @@
+/* Instance Variables */
+:root {
+    --colorBase: #8caec2;
+    --colorBaseDark: #7593a7;
+    --colorBaseRGBA: 140,174,194;
+}
+
+:root {
+    --colorBase: #467ba0;
+    --colorBaseDark: #467ba0;
+    --colorBaseRGBA: 70,123,160;
+}

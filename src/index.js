@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './styles/Variables.css';
+import './frameworks/bootstrap/scss/bootstrap.scss';
+import Header from './components/Header';
+import DataGrid from './components/DataGrid';
+import RouterAYF from './main';
+import './StickyScroll';
+import './styles/EstilosBase.css';
+import $ from "jquery";
+import * as bootstrap from 'bootstrap'
+import '../src/Jquery.Serialize';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+$(function() {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+});
+
 root.render(
   <React.StrictMode>
-    <App />
+     <RouterAYF />
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

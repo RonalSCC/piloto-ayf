@@ -1,0 +1,128 @@
+
+#Header{
+    height: 11%;
+    position: relative;
+}
+/*--------------------------------- */
+/*------------ Encabezado --------- */
+/*--------------------------------- */
+.rowTitle{
+    background: linear-gradient(90deg, var(--colorBase), var(--colorBaseDark),white);
+    background-size: 125% 125%;
+    padding: .7%;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    -webkit-animation: olaAnimation 7s ease ;
+    -moz-animation: olaAnimation 7s ease ;
+    animation: olaAnimation 7s ease ;
+}
+
+.rowTitle::before{
+    content: 'A&f';
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, .6);
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-style: oblique;
+    position: absolute;
+    text-shadow: 1px 1px 1px rgba(255,255,255,.5);
+    width: 50%;
+    height: 400%;
+    right: -10%;
+    top: 0%;
+    background: var(--colorBaseDark);
+    transform: rotate(-45deg);
+    z-index: 0;
+    /* background: url('../../public/FondoHeader.png');
+    background-size: contain; */
+}
+
+.titleHeader
+{
+    color: white;
+    font-size: 1.5rem;
+    text-align: left;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    margin-bottom: 0px;
+}
+
+.containSearch{
+    z-index: 1;
+}
+
+/*--------------------------------- */
+/*------------- IMG LOGO ---------- */
+/*--------------------------------- */
+.CimgLogo
+{
+    position: absolute;
+    height: 100%;
+}
+
+.imgLogo{
+    width: 50%;
+}
+
+/*--------------------------------- */
+/*------------- Title View --------- */
+/*--------------------------------- */
+.nameOfView
+{
+    color: white;
+    z-index: 1;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    margin-bottom: 0px;
+}
+
+.complementHeaderText{
+    color: white;
+    margin-bottom: 0px;
+    /* font-weight: 100; */
+    font-size: .7rem;
+    font-style: italic;
+}
+
+.CButtonBack{
+    /* background: white; */
+    position: absolute;
+    top: 0px;
+    right: 1%;
+    height: 100%;
+    /* width: 5%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnBack{
+    /* background-color: var(--colorBase); */
+    color:white;
+    z-index: 1;
+}
+
+.IconBtnBack{
+    color: white;
+    font-size: 1.3rem;
+}
+/*--------------------------------- */
+/*------------ Animations --------- */
+/*--------------------------------- */
+@-webkit-keyframes olaAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:60% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes olaAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:60% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes olaAnimation {
+    0%{background-position:10% 50%}
+    50%{background-position:90% 50%}
+    100%{background-position:10% 50%}
+}

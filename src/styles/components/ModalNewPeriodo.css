@@ -1,0 +1,17 @@
+.txtInfoNew
+{
+    font-size: .9rem;
+    color: rgba(0,0,0,0.8);
+}
+
+#ModalNewPeriodo label
+{
+    font-size: 1rem;
+}
+
+.colOptionNew
+{
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+}

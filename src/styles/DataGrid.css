@@ -1,0 +1,38 @@
+/*--------------------------------- */
+/*--------------- THEAD ----------- */
+/*--------------------------------- */
+.tableAyF
+{
+    box-shadow: 1px 1px 10px rgba(0,0,0,.15);
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 5px 5px 5px 5px;
+    background-color: white;
+
+}
+.tableAyF thead
+{
+    /* background-color: var(--colorBase) !important; */
+    background: linear-gradient(180deg, var(--colorBase), rgba(var(--colorBaseRGBA), .6))
+}
+
+.tableAyF th
+{
+    color: white;
+    font-weight: 400;
+    font-size: .9rem;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 30%);
+}
+
+.tableAyF td
+{
+    color: rgba(0,0,0,.9);
+    font-weight: 400;
+    font-size: .8rem;
+}
+
+.tdEliminar
+{
+    cursor: pointer;
+}

@@ -1,0 +1,232 @@
+.ContainerAlerts
+{
+    position: fixed;
+    width: 30%;
+    height: auto;
+    bottom: 1%;
+    right: 1%;
+    z-index: 9999;
+    border-radius: 5px;
+}
+
+.ItemAlert
+{
+    transition: .3s;
+    /* background: linear-gradient(90deg, rgba(var(--colorBaseRGBA), .7), var(--colorBaseDark), var(--colorBaseDark)); */
+    background-size: 300% 300%;
+    -webkit-animation: olaAnimation 7s ease;
+    -moz-animation: olaAnimation 7s ease;
+    animation: olaAnimation 7s ease;
+    width: 100%;
+    height: 5.5rem;
+
+    margin-bottom: 2%;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ContainerInfoAlert
+{
+    background: linear-gradient(180deg, white,white,white,white, rgba(255,255,255,.6));
+    padding: 1% 1% 1% 2%;
+    position: relative;
+    z-index: 1;
+}
+
+.ContainerInfoAlert::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: url('../../../public/LogoAYF.png');
+    background-size: 40%;
+    /* background-repeat: no-repeat; */
+    background-position: right bottom;
+    left: 0;
+    top: 0;
+    opacity: .06;
+    z-index: -1;
+}
+.titleAlert
+{
+    font-size: 1.1rem;
+    color: rgba(0,0,0,.8);
+    margin-bottom: 0px;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
+}
+
+.descAlert
+{
+    font-size: .8rem;
+    color: rgba(0,0,0,1);
+    margin-bottom: 0px;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
+}
+.ContainerImgAlert{
+    background: var(--colorBase);
+    border: 1px solid rgba(0, 0, 0, .2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 0px 0px 5px;
+
+}
+.imgAlert
+{
+    height: 3rem;
+    width: 3rem;
+
+}
+
+.IconTypeAlert{
+    color: white;
+    font-size: 2.5rem;
+}
+
+.CloseAlert
+{
+    position: absolute;
+    top: 1%;
+    right: 2%;
+}
+.CloseAlert i{
+    color: var(--colorBase);
+    cursor: pointer;
+}
+
+.CloseAlert i:hover
+{
+    filter: brightness(0.8);
+}
+
+.itemAlertOut
+{
+    opacity: 0;
+    height: 0px;
+    width: 0px;
+}
+
+.ItemAlertDecision
+{
+    height: 7rem !important;
+}
+.btnAlertDecision
+{
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 1%  5%;
+    width: 90%;
+    font-size: .8rem;
+    border-radius: 3px;
+}
+
+.alert-error, .alert-info, .alert-success, .alert-warning {
+    position: relative;
+    overflow: hidden;
+    /* animation: errorAnimation 1s infinite; */
+}
+
+.alert-error::before, .alert-info::before, .alert-success::before, .alert-warning::before{
+    content: '';
+    width: 100%;
+    height: 4%;
+    position: absolute;
+    bottom: -1%;
+    right: 0%;
+    animation: errorAnimation 4s forwards;
+    border-radius: 5%;
+}
+
+.alert-error::before{
+    background-color: #fa1414;
+}
+
+.alert-info::before{
+    background-color: gray;
+}
+
+.alert-warning::before{
+    background-color: orange;
+}
+
+.alert-success::before{
+    background-color: green;
+}
+.alert-error {
+    position: relative;
+    /* animation: errorAnimation 1s infinite; */
+}
+
+.alert-error .ContainerImgAlert
+{
+    /* border-left: .3rem solid #fa1414; */
+    /* border-top: .1rem solid orange; */
+    /* border-bottom: .1rem solid orange; */
+    /* box-shadow: -1px 0px 1px #fa1414; */
+}
+
+.btnAlertConfirm
+{
+    background-color: #2E4559;
+    color: white;
+}
+.btnAlertConfirm:hover
+{
+    filter: brightness(1.4);
+}
+
+.btnAlertDecline
+{
+    background-color: #dddddd;
+    color: black;
+}
+
+.btnAlertDecline:hover
+{
+    filter: brightness(1.1);
+}
+
+.CTitleAlert{
+    height: 25%;
+    padding: 0% 1%;
+}
+.CDescAlert{
+    display: flex;
+    align-items: center;
+    height: 75%;
+    padding: 0% 1%;
+    overflow: auto;
+}
+
+.CDescAlertDecision{
+    height: 45%;
+}
+/*--------------------------------- */
+/*------------ Animations --------- */
+/*--------------------------------- */
+@-webkit-keyframes olaAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:60% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes olaAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:60% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes olaAnimation {
+    0%{background-position:10% 50%}
+    50%{background-position:90% 50%}
+    100%{background-position:10% 50%}
+}
+
+@keyframes errorAnimation {
+
+    from{
+        width: 0%;
+    }
+
+    to{
+        width: 100%;
+    }
+
+}

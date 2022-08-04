@@ -1,0 +1,45 @@
+#SectionAditional{
+    transition: all ease .3s;
+    position: fixed;
+    left: 0%;
+    height: 88%;
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.1);
+    box-shadow: 1px 1px 5px rgba(0,0,0,.15);
+    border-radius: 0px 5px 5px 0px;
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.ShowSection{
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.StickySection
+{
+    top: 0px;
+    height:  99% !important;
+}
+
+.CSectionClose
+{
+    transition: all ease .4s;
+    position: absolute;
+    left: 3%;
+    top: 1%;
+}
+
+.CSectionClose:hover{
+    left: 2%;
+}
+.IconSectionClose
+{
+    font-size: 1.5rem;
+    color: var(--colorBase);
+    cursor: pointer;
+}
+.IconSectionClose:hover{
+    filter: saturate(200%);
+}

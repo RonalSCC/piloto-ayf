@@ -1,0 +1,91 @@
+.tdPeriodoContable
+{
+    text-align:center;
+}
+
+.iconLock
+{
+    color: #d58a00;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.iconUnlock
+{
+    color: var(--colorBase);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.tdAdmin{
+    color: rgba(0,0,0,.4) !important;
+    font-weight: bold !important;
+    cursor: pointer;
+}
+
+.tdAdmin:hover{
+    color: rgba(0,0,0,.8) !important;
+    font-weight: 700 !important;
+}
+
+.IconTrash
+{
+    color: #ff6060;
+    font-size: 1rem;
+}
+
+.tdEliminar{
+    text-align: center;
+}
+
+.IconTrash
+{
+    transition: all ease .1s;
+}
+
+.IconTrash:hover
+{
+    transform: scale(1.1);
+}
+
+.btnHistory
+{
+    background-color: var(--colorBase);
+    color: white;
+}
+
+.IconTipoCambio
+{
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.IconAddLog
+{
+    color: green;
+}
+
+.IconDeleteLog
+{
+    color:  #ff6060;
+}
+
+.IconEditLog
+{
+    color: var(--colorBaseDark);
+}
+
+.tableLogs th
+{
+    font-size: .75rem;
+}
+
+.tableLogs td
+{
+    font-size: .75rem;
+}
+
+.tableLogs td i
+{
+    font-size: .85rem;
+}

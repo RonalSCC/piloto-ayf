@@ -1,0 +1,103 @@
+body{
+    background: rgba(0,0,0,.03);
+}
+
+/* width */
+.scrollAYF::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  .scrollAYF::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+
+  }
+  
+  /* Handle */
+  .scrollAYF::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+
+  }
+  
+  /* Handle on hover */
+  .scrollAYF::-webkit-scrollbar-thumb:hover {
+    background: var(--colorBase);
+  }
+
+
+  input
+  {
+    border: 1px solid rgba(0,0,0,.2);
+    width: 90%;
+    padding: 1.5%;
+    outline: none !important;
+    color: rgba(0,0,0,.7);
+    font-size: .9rem;
+    border-radius: 4%;
+  }
+
+  select
+  {
+    border: 1px solid rgba(0,0,0,.2);
+    width: 90%;
+    padding: 1.5%;
+    outline: none !important;
+    color: rgba(0,0,0,.7);
+    font-size: .9rem;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.1);
+  }
+
+  .CircleButton{
+    width: 2.8rem;
+    height: 2.8rem;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 100%;
+    box-shadow: 2px 1px 3px rgba(0,0,0,.4);
+  }
+
+  .CircleButton:hover{
+    filter: saturate(150%);
+  }
+
+  label
+  {
+    font-size: .95rem;
+    color: rgba(0,0,0,.7);
+    font-weight: 500;
+  }
+
+  .btnAYF{
+    transition: all ease .2s;
+    padding: .5% 3%;
+    border: 1px solid rgba(0, 0, 0, .2);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    font-size: .9rem;
+  }
+
+  .btnAYF:hover{
+    filter: saturate(150%);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
+    font-size: .91rem;
+  }
+
+  .btnAYFBase{
+    background-color: var(--colorBase);
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    font-weight: 400;
+  }
+
+/* ------------------------------------ */
+/* ---------------- tooltip ----------- */
+/* ------------------------------------ */
+
+.tooltip-inner
+{
+  background: var(--colorBase);
+  text-align: start;
+  font-size: .8rem;
+}

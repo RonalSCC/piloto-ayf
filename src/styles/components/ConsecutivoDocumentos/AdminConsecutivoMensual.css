@@ -1,0 +1,118 @@
+#CGeneralAdminConsecutivoMensual{
+    background-color: white;
+    padding: 5% 4%;
+}
+
+.titleAdminCM{
+    text-align: center;
+    color: rgba(0,0,0,.8);
+    margin-bottom: 0px;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.2);
+}
+
+.subtitleAdminCM{
+    text-align: center;
+    color: var(--colorBaseDark);
+    font-weight: 500;
+    font-size: .9rem;
+    text-shadow: 1px 1px .3px rgba(0,0,0,.1);
+    margin-bottom: 0px;
+}
+.txtEncabezadoMeses{
+    font-size: .9rem;
+    margin-bottom: 0%;
+    color: var(--colorBaseDark);
+    font-weight: 700;
+    /* text-shadow: 1px 1px 1px rgba(0,0,0,.1); */
+}
+
+.CContainerSaveConMes{
+    background: var(--colorBase);
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,.2);
+    box-shadow: 1px 1px 2px rgba(0,0,0,.4);
+    cursor: pointer;
+}
+
+.CContainerSaveConMes:hover{
+    filter: saturate(180%);
+
+}
+.IconConMes{
+    color: white;
+    font-size: .9rem;
+}
+
+
+/* -------- Card Meses ---------- */
+
+.CCardMesConsecutivo{
+    display: flex;
+    border: 1px solid rgba(0,0,0,.2);
+    box-shadow: 1px 1px 2px rgba(var(--colorBaseRGBA),.3);
+    padding: 1.5%;
+    margin-bottom: 2%;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    /* background: linear-gradient(90deg,var(--colorBase), rgba(var(--colorBaseRGBA), .2), transparent); */
+
+}
+
+.CCardMesConsecutivo::before
+{
+    content: '';
+    position: absolute;
+    height: 250%;
+    width: 50%;
+    /* background: linear-gradient(90deg,transparent, rgba(var(--colorBaseRGBA), .2), var(--colorBase)); */
+    top: -100%;
+    left: -10%;
+    transform: rotate(140deg);
+    z-index: -1;
+
+}
+
+.inputConsecutivoMes{
+    width: 95%;
+    border: 1px solid rgba(0,0,0,0.3) !important;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.08);
+    font-size: .7rem;
+}
+
+.FirstLetterMonth{
+    font-weight: bold;
+    color: var(--colorBase);
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.1);
+}
+.txtxNameMes{
+    padding-left: 5%;
+    margin-bottom: 0px;
+    font-size: .8rem;
+}
+
+.DisabledContainer{
+    opacity: 0.7;
+    pointer-events: none;
+}
+.txtAutoConsecutivos{
+    margin-bottom: 0px;
+    color: rgba(0,0,0,.6);
+    font-weight: 700;
+    font-size: 1rem;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.1);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all ease .2s;
+}
+
+.txtAutoConsecutivos:hover{
+    font-weight: 700;
+    border-bottom: 2px solid var(--colorBase);
+    text-shadow: 1px 1px 3px rgba(0,0,0,.2);
+
+}
